@@ -1,0 +1,3 @@
+boto==2.27.0
+requests==2.2.1
+pbr
