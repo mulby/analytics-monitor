@@ -17,7 +17,7 @@ class State(object):
         }
         self.previous = PreviousState()
         if self.previous.is_valid:
-            self.elapsed_seconds = float((self.previous.timestamp - self.timestamp).total_seconds())
+            self.elapsed_seconds = float((self.previous.timestamp - self.timestamp).seconds)
         else:
             self.elapsed_seconds = 0.00000000001
 
