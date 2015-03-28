@@ -30,11 +30,11 @@ class ElasticMapreduceMonitor(object):
 
         metrics = []
         if instance_info['isRunningJobTracker']:
-            metrics += JobTrackerMonitor().update()
+            metrics += JobTrackerMonitor().update(state)
         if instance_info['isRunningNameNode']:
-            metrics += NameNodeMonitor().update()
+            metrics += NameNodeMonitor().update(state)
         if instance_info['isRunningTaskTracker']:
-            metrics += TaskTrackerMonitor().update()
+            metrics += TaskTrackerMonitor().update(state)
 
         return metrics
 
