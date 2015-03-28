@@ -24,6 +24,8 @@ class TestHadoopJmx(unittest.TestCase):
         self.assertEquals(jmx.gc_mark_sweep_time, 3069165)
         self.assertEquals(jmx.gc_copy_count, 398)
         self.assertEquals(jmx.gc_copy_time, 10108)
+        self.assertEquals(jmx.gc_count, 1205)
+        self.assertEquals(jmx.gc_time, 3079273)
 
         mock_requests.get.assert_called_once_with('http://localhost:9100/jmx')
 

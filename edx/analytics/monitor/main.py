@@ -1,18 +1,24 @@
 
 from cloudwatch import Cloudwatch
-from edx.analytics.monitor.monitor import JobTrackerMonitor, NameNodeMonitor, DiskUsageMonitor
+from edx.analytics.monitor.monitor import ElasticMapreduceMonitor, DiskUsageMonitor
+from state import State
 
 
 def main():
+    state = State()
     metric_collector = Cloudwatch()
     monitors = [
-        JobTrackerMonitor(),
-        NameNodeMonitor(),
+        ElasticMapreduceMonitor(),
         DiskUsageMonitor(),
     ]
 
     for monitor in monitors:
-        metric_collector.send(monitor.update())
+        metrics = monitor.update(state)
+
+        metric_collector.send(metrics)
+        state.update(metrics)
+
+    state.save()
 
 
 if __name__ == '__main__':
