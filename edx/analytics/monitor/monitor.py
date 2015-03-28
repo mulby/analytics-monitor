@@ -15,7 +15,11 @@ class JobTrackerMonitor(object):
 
     def update(self):
         return [
-            Metric('JobTrackerHeapUsage', self.jmx.heap_used_percent, 'Percent')
+            Metric('JobTrackerHeapUsage', self.jmx.heap_used_percent, 'Percent'),
+            Metric('JobTrackerGcMarkSweepCount', self.jmx.gc_mark_sweep_count, 'None'),
+            Metric('JobTrackerGcMarkSweepTime', self.jmx.gc_mark_sweep_time, 'Milliseconds'),
+            Metric('JobTrackerGcCopyCount', self.jmx.gc_copy_count, 'None'),
+            Metric('JobTrackerGcCopyTime', self.jmx.gc_copy_time, 'Milliseconds')
         ]
 
 

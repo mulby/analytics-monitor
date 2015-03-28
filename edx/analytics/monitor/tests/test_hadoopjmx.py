@@ -19,8 +19,11 @@ class TestHadoopJmx(unittest.TestCase):
         mock_requests.get.return_value = FakeResponse('jobtracker_jmx.json')
 
         jmx = hadoopjmx.HadoopJmx()
-        usage = jmx.heap_used_percent
-        self.assertAlmostEqual(usage, 6.982421875)
+        self.assertAlmostEqual(jmx.heap_used_percent, 6.982421875)
+        self.assertEquals(jmx.gc_mark_sweep_count, 807)
+        self.assertEquals(jmx.gc_mark_sweep_time, 3069165)
+        self.assertEquals(jmx.gc_copy_count, 398)
+        self.assertEquals(jmx.gc_copy_time, 10108)
 
         mock_requests.get.assert_called_once_with('http://localhost:9100/jmx')
 
