@@ -87,7 +87,7 @@ class TaskTrackerMonitor(JvmMonitor):
 
 class DiskUsageMonitor(object):
 
-    def update(self):
+    def update(self, state):
         proc = subprocess.Popen(['df'], stdout=subprocess.PIPE)
         (stdout, _stderr) = proc.communicate()
         if proc.returncode != 0:
