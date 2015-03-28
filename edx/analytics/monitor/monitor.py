@@ -24,7 +24,7 @@ Metric = namedtuple('Metric', ['name', 'value', 'unit'])
 
 class ElasticMapreduceMonitor(object):
 
-    def update(self):
+    def update(self, state):
         with open('/mnt/var/lib/info/instance.json', 'r') as info_file:
             instance_info = json.load(info_file)
 
